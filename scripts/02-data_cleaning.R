@@ -13,7 +13,7 @@ library(haven)
 # library()
 
 #### Clean data ####
-raw_data <- read_dta("starter_folder-main/inputs/data/ESS_clean.dta")
+
 
 
 # write_csv(cleaned_data, "outputs/data/analysis_data.csv")
