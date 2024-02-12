@@ -14,7 +14,6 @@ data <- data |>
 #---------------------------- Main data fetching layer ------------------------#
 
 #----------------------------- First Replication ------------------------------#
-
 # Create table with deciles and average income/voter turnpout for that decile
 new_data_1 <- data |>
   group_by(income_decile) |>
@@ -37,7 +36,7 @@ status_turnout_plot <- ggplot(new_data_1, aes(x = average_income, y = average_tu
 # Create table with average voter turnout for each year+quintile combo
 average_turnout <- data |>
   group_by(year, income_quintile) |>
-  summarize(voter_turnout = mean(voted) * 100)  # Convert proportion to percentage
+  summarize(voter_turnout = mean(voted) * 100)  # Convert prop. to percentage
 
 # Plotting
 quintile_turnout_plot <- ggplot(
@@ -57,9 +56,10 @@ quintile_turnout_plot <- ggplot(
     x = "Election Year",
     y = "Voter Turnout (%)"
   ) +
-  scale_x_continuous(breaks = unique(average_turnout$year)) + # Adjust the x-axis
+  scale_x_continuous(breaks = unique(average_turnout$year)) + # Only elec. years
   theme_minimal() +
   theme(
+    panel.border = element_rect(colour = "black", fill=NA, linewidth=1), 
     panel.grid.major.x = element_blank(),
     panel.grid.minor.x = element_blank(),
     panel.grid.major.y = element_blank(),
@@ -67,7 +67,50 @@ quintile_turnout_plot <- ggplot(
   )
 #----------------------------- Second Replication -----------------------------#
 
+#----------------------------- Third Replication ------------------------------#
+# Create table with average voter turnout for each year+quintile combo
+average_income <- data |>
+  group_by(year, income_quintile) |>
+  summarize(voter_income = mean(hh_income))
+
+# Plotting
+quintile_income_plot <- ggplot(
+  average_income, aes(
+    x = year, 
+    y = voter_income, 
+    group = income_quintile, 
+    color = as.factor(income_quintile))) +
+  geom_line(aes(linetype = as.factor(income_quintile)), color = 'black') +
+  geom_point(aes(shape = as.factor(income_quintile)), color = 'black') +
+  scale_linetype_manual(values = 
+                          c("solid", "dotted", "dashed", "longdash", "twodash"), 
+                        name = 'Quintile') +
+  scale_shape_manual(values = c(16, 17, 18, 19, 15), name = 'Quintile') +
+  labs(
+    title = "Average Household Income by Quintile",
+    x = "Election Year",
+    y = "Average Income (Constant 2010 k€)"
+  ) +
+  scale_x_continuous(breaks = unique(average_income$year)) + # Only elec. years
+  scale_y_continuous(
+    breaks = c(0, 20, 40, 60, 80), 
+    labels = c("0", "20", "40", "60", "80")) +
+  theme_minimal() +
+  theme(
+    panel.border = element_rect(colour = "black", fill=NA, linewidth=1),
+    axis.ticks = element_line(color = "black"),
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor.y = element_blank()
+  )
+#----------------------------- Third Replication ------------------------------#
+
+
 # Presenting the graphs
 status_turnout_plot
 
 quintile_turnout_plot
+
+quintile_income_plot
+
