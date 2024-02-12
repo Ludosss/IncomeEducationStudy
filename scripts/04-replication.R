@@ -105,12 +105,15 @@ quintile_income_plot <- ggplot(
     panel.grid.minor.y = element_blank()
   )
 #----------------------------- Third Replication ------------------------------#
+inputs/data/analysis_clean.dta
 
+# Saving the graphs
+ggsave("outputs/data/status_turnout_plot.png", plot = status_turnout_plot, width = 10, 
+       height = 6, dpi = 300)
 
-# Presenting the graphs
-status_turnout_plot
+ggsave("outputs/data/quintile_turnout_plot.png", plot = quintile_turnout_plot, width = 10, 
+       height = 6, dpi = 300)
 
-quintile_turnout_plot
-
-quintile_income_plot
+ggsave("outputs/data/quintile_income_plot.png", plot = quintile_income_plot, width = 10, 
+       height = 6, dpi = 300)
 
