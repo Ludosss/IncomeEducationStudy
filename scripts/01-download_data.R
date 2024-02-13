@@ -1,8 +1,10 @@
 #### Preamble ####
 # Purpose: Downloads and saves the data from dataverse.harvard.edu
-# Author: Xavier Ibanez-Padron, Lexi Knight
+# Author: Lexi Knight,
+#         Xavier Ibanez-Padron
 # Date: 12 February 2024
-# Contact: xavier.ibanezpadron@mail.utoronto.ca
+# Contact: xavier.ibanezpadron@mail.utoronto.ca,
+#          lexi.knight@mail.utoronto.ca
 # License: MIT
 # Pre-requisites: Install the "dataverse" package via
 #                 'install.packages("dataverse")' in console
