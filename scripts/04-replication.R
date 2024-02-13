@@ -1,10 +1,11 @@
 library(tidyverse)
-library(haven)
 library(ggplot2)
 library(dplyr)
 
 #---------------------------- Main data fetching layer ------------------------#
-raw_data <- read_dta("inputs/data/analysis_clean.dta")
+columns <- c("voted", "hh_income", "year")
+raw_data <- fread("inputs/data/bologna_data.tab", select = columns)
+
 data <- select(raw_data, c('voted', 'hh_income', 'year'))
 
 # Order people into income deciles and quintiles
