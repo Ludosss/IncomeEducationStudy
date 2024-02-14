@@ -5,15 +5,15 @@
 # Contact: rohan.alexander@utoronto.ca [...UPDATE THIS...]
 # License: MIT
 # Pre-requisites: [...UPDATE THIS...]
-# Any other information needed? [...UPDATE THIS...]
+# Any other information needed? Install the readstata13 package via
+#                               install.packages("readstata13")
 
 
 #### Workspace setup ####
 library(tidyverse)
-# [...UPDATE THIS...]
-
+library(data.table)
 #### Simulate data ####
-# [...ADD CODE HERE...]
-
+column = c("smegbli", "smegbhw")
+data <- fread("inputs/data/ESS7e02_3.csv", select = column)
 
 
