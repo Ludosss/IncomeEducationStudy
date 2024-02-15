@@ -68,3 +68,26 @@ ggplot(avg_income_decile, aes(x = `Highest Education`, y = Average_Income_Decile
        y = "Average Income Decile") +
   theme_minimal()
 #--------------Graphing education level vs income decile (average)-------------#
+
+# ----------------------------------TESTS! :D----------------------------------#
+if(any(sim_data$`Household Income Decile` < 0)) {
+  stop("Household Income Decile contains negative values")
+}
+
+if(any(sim_data$`Household Income Decile` > 10)) {
+  stop("Household Income Decile contains nonsense values")
+}
+
+expected_education <- 1:26
+if(!all(levels(sim_data$`Highest Education`) %in% expected_education)) {
+  stop("Highest Education contains unexpected levels")
+}
+
+if(!all(levels(sim_data$`Highest Education - Mother`) %in% expected_education)) {
+  stop("Highest Education contains unexpected levels")
+}
+
+if(!all(levels(sim_data$`Highest Education - Father`) %in% expected_education)) {
+  stop("Highest Education contains unexpected levels")
+}
+# ----------------------------------TESTS! :D----------------------------------#
