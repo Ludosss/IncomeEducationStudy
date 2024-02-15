@@ -1,4 +1,9 @@
-# IncomeEducationStudy
+# Impact of Parental Education on a Child's Learning Odyssey and Future Finances
+
+
+--Reproductions--  
+For reproduction code see 'scripts/04-replication.R'  
+For reproduction output graphs see 'outputs/data/'
 
 --Note about raw data--  
 Raw downloaded data exceeds github file size limits. As such, you can find information on accessing that data in 'scripts/01-download_data.R'
