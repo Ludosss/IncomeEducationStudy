@@ -14,6 +14,7 @@ library(tidyverse)
 #### Download+Save data ####
 
 #-------------------------Income dataset from Bologna--------------------------#
+# Open the link below to manually download the dataset
 bologna_file <- "https://dataverse.harvard.edu/api/access/datafile/4169849?gbrecs=false"
 bol_save_to <- "inputs/data/bologna_data.tab"
 download.file(bologna_file, destfile = bol_save_to, method = "auto")
