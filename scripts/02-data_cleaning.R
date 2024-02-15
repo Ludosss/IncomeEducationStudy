@@ -1,19 +1,32 @@
 #### Preamble ####
-# Purpose: Cleans the raw plane data recorded by two observers..... [...UPDATE THIS...]
-# Author: Rohan Alexander [...UPDATE THIS...]
-# Date: 6 April 2023 [...UPDATE THIS...]
-# Contact: rohan.alexander@utoronto.ca [...UPDATE THIS...]
+# Purpose: Cleans the raw plane ESS Round 10 data
+# Author: Xavier Ibanez-Padron
+#         Lexi Knight
+# Date: 14 February 2024
+# Contact: xavier.ibanezpadron@mail.utoronto.ca,
+#          lexi.knight@mail.utoronto.ca
 # License: MIT
-# Pre-requisites: [...UPDATE THIS...]
-# Any other information needed? [...UPDATE THIS...]
+# Pre-requisites: Run the file 01-download_data.R and follow all instructions
+#                 Install the package 'data.table' via
+#                 install.packages("data.table")
+# Any other information needed? N/A
 
 #### Workspace setup ####
 library(tidyverse)
-library(haven)
-# library()
-
+library(data.table)
 #### Clean data ####
 
+# Fetch data with only necessary columns
+columns = c("edlvdfr", "edlvmdfr", "edlvfdfr", "hinctnta")
+raw_data <- fread("inputs/data/ESS10.csv", select = columns)
 
+# Remove NA rows (non-French data points)
+semi_clean_data <- na.omit(raw_data)
 
-# write_csv(cleaned_data, "outputs/data/analysis_data.csv")
+# Remove unusable data points (no answer, refuse, unsure, etc.)
+bad_values <- c(77, 88, 99, 5555, 7777, 8888, 9999)
+
+cleaned_data <- semi_clean_data |>
+  filter(!if_any(everything(), ~ .x %in% bad_values))
+
+write_csv(cleaned_data, "outputs/data/ESS10_Clean.csv")

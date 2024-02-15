@@ -84,10 +84,10 @@ if(!all(levels(sim_data$`Highest Education`) %in% expected_education)) {
 }
 
 if(!all(levels(sim_data$`Highest Education - Mother`) %in% expected_education)) {
-  stop("Highest Education contains unexpected levels")
+  stop("Mothers Highest Education contains unexpected levels")
 }
 
 if(!all(levels(sim_data$`Highest Education - Father`) %in% expected_education)) {
-  stop("Highest Education contains unexpected levels")
+  stop("Fathers Highest Education contains unexpected levels")
 }
 # ----------------------------------TESTS! :D----------------------------------#
