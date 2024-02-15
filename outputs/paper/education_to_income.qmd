@@ -46,7 +46,7 @@ The remainder of this paper is structured as follows: Section 2 discusses the da
 
 
 # Data {#sec-data}
-We retrieved the dataset from the European Social Survey (ESS) data portal, a source which reflects a wide array of social, political, and demographic variables collected across Europe. After downloading the dataset, We cleaned and analyzed via open source statistical programming language R [@citeR], using functions from libraries tidyverse [@citetidy], dplyr [@citedplyr], knitr [@citeknitr], and ggplot2 [@citeggplot].
+We retrieved the dataset from the European Social Survey [@ESS2013] data portal, a source which reflects a wide array of social, political, and demographic variables collected across Europe. After downloading the dataset, We cleaned and analyzed via open source statistical programming language R [@citeR], using functions from libraries tidyverse [@citetidy], dplyr [@citedplyr], knitr [@citeknitr], and ggplot2 [@citeggplot].
 
 Our analysis concentrates on the 2020 dataset, which comprises responses from over 37,000 individuals across various European countries. This paper focuses specifically on approximately 1,400 respondents from France. 
   
