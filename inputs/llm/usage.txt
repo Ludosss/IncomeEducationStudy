@@ -1935,3 +1935,11 @@ In this BibTeX entry:
 - `url` provides a link to the ESS website for further information.
 
 Ensure the `url` is updated if necessary, and adjust any of the fields to better fit the specific requirements or context where you're citing the ESS
+
+
+
+To create a creative title on chat gpt 
+
+INPUT: please suggest a creative title for: effect of parents level of education on child's education and thus the child's income
+
+OUTPUT:  "From Roots to Riches: Unraveling the Impact of Parental Education on a Child's Learning Odyssey and Future Finances 🌱💡💰"
