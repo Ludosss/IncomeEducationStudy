@@ -1,5 +1,5 @@
 #### Preamble ####
-# Purpose: Replicates 3 figures from [paper]
+# Purpose: Replicates 3 figures from 'https://doi.org/10.1111/ajps.12605'
 # Author: Xavier Ibanez-Padron
 #         Lexi Knight
 # Date: 14 February 2024
