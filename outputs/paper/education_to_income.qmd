@@ -3,12 +3,17 @@ title: "From Roots to Riches: Unraveling the Impact of Parental Education on a C
 author: 
   - Lexi Knight
   - Xavier Ibanez-Padron
-thanks: "Code and data are available at: https://github.com/Ludosss/IncomeEducationStudy"
+thanks: "Code and data are available at: https://github.com/Ludosss/IncomeEducationStudy; Replication on the Social Science Reproduction Platform can be found at: https://www.socialsciencereproduction.org/reproductions/1618/published/index"
 date: today
 date-format: long
-abstract: "This study investigates the empowering impact of parents' level of education on their child's academic success and as a result the child's household net income. Taking advantage of a large dataset from the European Social Survey and specifically looking at French data gathered in 2020, this study dives into the relationships of these variables to determine the correlation between parental education, the child's education as well as income levels. The headline result demonstrates a positive correspondence between years of parental education on a greater chance the child strives for higher education after high school and this is linked to an increase in income in the career path of their choice. The implications of these findings embellish the effect parents' education and outlook on learning on their child's academic and workplace success."
+abstract: "This study investigates the empowering impact of parents' level of education on their child's academic success and thus their income. Taking advantage of a large dataset from the European Social Survey and focusing on French data gathered in 2020, this study dives into the affiliation between the highest level of education completed by the mother, father and child as well as the child's household net income to determine the correlation between the four variables. The headline result demonstrates a positive correspondence between years of parental education on years of the child's education which is linked to an increase in income in the child's future. The implications of these findings embellish the role that the parents' education has on their child’s motivation to pursue post-secondary education and strive for high paying salaries."
 format: pdf
 number-sections: true
+header-includes:
+  - \usepackage{titling}
+  - \setlength{\thanksmarkwidth}{1.8em}
+  - \setlength{\thanksmargin}{0em}
+  
 bibliography: references.bib
 ---
 
@@ -34,15 +39,15 @@ cleaned_income_education_data <- read_csv(here::here("outputs", "data", "ESS10_C
 ```
 
 # Introduction
-  A study done on tenth graders in the Mardan district of Pakistan showed that children with educated parents have notably greater academic success and go onto higher levels of education as compared to children with uneducated parents [@Idris2020]. The authors explain that parents have a great deal of influence on their child's knowledge, vocabulary and values. Parents with higher education promote meaningful discussion at home, social skills, give advice based on their experiences and encourage their children to put in the effort to learn. Additionally, parents' level of education corresponds to their attitude toward education thus their goals for their children. These factors are all positively correlated with students' academic success. Parents without post-secondary education are less likely to have discussions and create learning opportunities in the household [@Idris2020]. Thus parents with more years of education are found to aspire their children to have higher skills, better equipping them for post-secondary education.
-  
-  Another study done in Vietnam used a mean and quantile regression approach to observe the effect of household income on higher levels of education [@VanVu2020]. The key finding highlighted that higher levels of education are positively correlated with earning higher income. This was very clear when put into the context of Vietnam as a country. Vietnam was known as one of the poorest countries in the world but in the last few decades has worked its way up to a lower-middle income country. The economy was greatly enhanced by refining the education systems as well as access to tertiary levels [@VanVu2020]. This also boosted poverty levels and increased opportunities for children to engage in higher levels of learning. The regression analysis proves that it pays off to pursue higher education as it provides a  positive return for all income groups. Overall, the findings of the study explain that additional years of education results in higher income households as compared to households with fewer years of education who are subject to lower levels of income [@VanVu2020].
-  
-  In this paper, we examine the relationship between one’s parents' level of education, their level of education as well as their income. More specifically we are looking at data from France taken from a European Union Survey in the year 2018. The variables of interest include both the mothers, fathers and childs highest level of education which is ranked on a rating scale from zero through seven. The fourth variable is the child's household net income based on the head of the household.  We are interested in whether there is a correlation between parents' level of education and their child's level of education. Specifically, we are curious as to whether our data has the same trends as the study done in Pakistan, in that parents with high levels of education raise their children to also complete higher education. Furthermore, we are interested in the relationship between one’s level of education and their income. Explicitly, we are keen to understand whether our data and that of the Vietnam study are positively correlated, indicating higher levels of education are analogous to higher income.
-  
-  To better visualize the data, we created figures illustrating different categories of education and where the mother, father and child fit in as well as the childs net household’s income. This was best represented using line plots to analyze the relationship between each variable. Our results indicate that the France data showed similar trends to both Pakistan and Vietnam. Thus we were able to conclude that children with mothers and fathers that have higher levels of education are more likely to themselves engage in higher levels of education. Moreover, it was observed that more years of education are affiliated with higher levels of education. This investigation is captivating as one of the big decisions upon completing secondary school is whether to pursue higher education or enter straight into the workforce. This decision is highly affected by the mother and fathers level of higher education. These two paths yield very different salaries and hence lifestyles therefore highlighting the weight parents' education holds on a child's future finances. 
+  A study done on tenth graders in the Mardan district of Pakistan showed that children with educated parents have notably greater academic success and go onto higher levels of education as compared to children with uneducated parents [@Idris2020]. The authors explain that parents have a great deal of influence on their child's knowledge, vocabulary and values. Parents with higher education promote meaningful discussion at home, social skills, are better equipped at giving advice based on their experiences and encourage their children to put in the effort to learn. Additionally, parents' level of education corresponds to their attitude toward education and thus their goals for their children. These factors are all positively correlated with students' academic success. Parents without post-secondary education are less likely to have discussions and create learning opportunities in the household [@Idris2020]. As follows, parents with supplementary years of education are found to aspire their children to gain higher skills, better preparing them for post-secondary education. 
 
-The remainder of this paper is structured as follows: Section 2 discusses the data, Section 3 presents the results and lastly Section 4 discusses our findings as well as areas of weaknesses and improvements. 
+Another study done in Vietnam used a mean and quantile regression approach to observe the consequence of higher levels of education on household income [@VanVu2020]. The key finding highlighted that higher levels of education are positively correlated with earning higher income. This was very clear when put into the context of Vietnam as a country. Vietnam was one of the poorest countries in the world but in the last few decades, it has worked its way up to a lower-middle income country. The economy was greatly enhanced by refining the education systems as well as growing access to tertiary levels [@VanVu2020]. This also boosted poverty levels and increased opportunities for children to engage in higher levels of learning. The regression analysis proves that it pays off to pursue higher education as it provides a  positive return for all income groups. Overall, the findings of the study explain that additional years of education results in higher income households as compared to households with fewer years of education who are subject to lower levels of income [@VanVu2020]. 
+
+In this paper, we examine the relationship between one’s parents' level of education, their level of education as well as their income. More specifically we are looking at data from France taken from a European Union Survey in the year 2020. The variables of interest include the mothers, fathers and childs highest level of education on a rating scale from one through 26. The fourth variable is the child's household net income based on the head of the household.  We are interested in whether there is a correlation between the mother’s and father’s level of education on their child's level of education. Specifically, we are curious as to whether our data has the same trends as the study done in Pakistan, in that parents with high levels of education raise children that also achieve the same level of education. Furthermore, we are interested in the relationship between one’s level of education and their income. Explicitly, we are keen to understand whether our data and that of the Vietnam study are positively correlated, where higher levels of education are analogous to higher income. 
+
+To better visualize the data, we created figures illustrating the average child's education level based on the mother’s and father’s education level.  Furthermore, another figure displays the relationship between highest level of education completed and income. This was best represented using line plots to analyze the relationship between each variable. Our results indicate that the France data showed similar trends to both Pakistan and Vietnam. Thus we were able to conclude that children with mothers and fathers that have higher levels of education are more likely to themselves engage in higher levels of education. Moreover, it was observed that increased years of education are affiliated with higher income. This investigation is captivating as one of the big decisions upon completing secondary school is whether to pursue higher education or enter straight into the workforce. This decision is greatly affected by the child’s home environment thereby their mother and fathers level of education. These two paths yield very different salaries and lifestyles therefore highlighting the weight parents' education holds on a child's future finances. 
+
+The remainder of this paper is structured as follows: Section 2 discusses the data, Section 3 presents the results and lastly Section 4 discusses our findings, areas of weaknesses and improvements. 
 
 
 # Data {#sec-data}
@@ -56,11 +61,103 @@ Due to the monopoly the ESS holds over social data collection in Europe, no comp
 
 The selected variables were cleaned and prepared for analysis. This included removing non-French data points and non-responses. This was done for the sake of ensuring the data accurately represented the survey's findings while also allowing robust analysis.
 
-The education level mentioned in the data ranges from numerical values 1 through 26, each representing a different educational milestone. Please refer to Table 1 for a detailed description of each education level integer and its corresponding educational milestone [Translated from the original French].
+The education level mentioned in the data ranges from numerical values 1 through 26, each representing a different educational milestone. Please refer to Table 1 in the appendix for a detailed description of each education level integer and its corresponding educational milestone [Translated from the original French].
 
 \newpage
 
-```{r education-level-table, echo=FALSE}
+# Results
+
+```{r, fig.width=6.4, fig.height=2.5}
+#| echo: false 
+# code not included in doc
+#| warning: false 
+# no warnings in the doc
+#| message: false 
+# no messages in the doc
+
+y_limits <- c(1, 26)
+
+# Want to plot child education level based on parents education level
+avg_education_by_mother <- cleaned_income_education_data |>
+  group_by(`Mother's highest level of education`) |>
+  summarize(average_education = mean(`Highest level of education`, na.rm = TRUE)) |>
+  ungroup()
+
+avg_education_by_father <- cleaned_income_education_data |>
+  group_by(`Father's highest level of education`) |>
+  summarize(average_education = mean(`Highest level of education`, na.rm = TRUE)) |>
+  ungroup()
+
+# Create the line graph
+mom_plot <- ggplot(avg_education_by_mother, aes(x = `Mother's highest level of education`, y = average_education)) +
+  geom_line() +  # Draws the line
+  geom_point() +  # Adds points at each data point
+  labs(
+    x = "Mother's Education Level",
+    y = "Child's Education Level Avg."
+  ) +
+  scale_y_continuous(limits = y_limits) +
+  theme_minimal()  # Applies a minimal theme
+
+dad_plot <- ggplot(avg_education_by_father, aes(x = `Father's highest level of education`, y = average_education)) +
+  geom_line() +  # Draws the line
+  geom_point() +  # Adds points at each data point
+  labs(
+    x = "Father's Education Level",
+    y = "Child's Education Level Avg."
+  ) +
+  scale_y_continuous(limits = y_limits) +
+  theme_minimal()  # Applies a minimal theme
+
+parent_plot <- mom_plot + dad_plot
+parent_plot + plot_annotation(title = "Influence of Parental Education Levels on Child's Education", theme = theme(plot.title = element_text(hjust = 0.5)))
+```
+
+  Figure 1.
+  
+```{r,  fig.width=6.4, fig.height=2.1}
+#| echo: false 
+# code not included in doc
+#| warning: false 
+# no warnings in the doc
+#| message: false 
+# no messages in the doc
+
+avg_income_by_education <- cleaned_income_education_data |>
+  group_by(`Highest level of education`) |>
+  summarize(Average_Income_Decile = mean(`Households Total Income`, na.rm = TRUE)) |>
+  ungroup()
+
+ggplot(avg_income_by_education, aes(x = `Highest level of education`, y = Average_Income_Decile)) +
+  geom_line() +  # Connect points with a line
+  geom_point() +  # Add points for each education level
+  labs(
+    title = "Income Trends Across Education Levels",
+    x = "Highest Education Level",
+    y = "Income Decile (Avg.)"
+  ) +
+  theme_minimal()  # Use a minimal theme for the plot
+```
+
+  Figure 2.
+  
+The mothers level of education is positively correlated with the average child's education level as shown in figure 1. There is a clear upward trend showcasing higher levels of education completed by the mother with higher levels of education completed by the child. There is a clear outlier in the dataset for mothers' education at level 23 and the child's education level of 6. It seems that mothers with higher professional diplomas have children with lower education, particularly those whose highest education level is between 10th to 12th grade. Figure 1 also illustrates the relationship between the fathers education level and the child’s education level. Similarly to the correlation in mother-child education, father-child education portrays an increasing interaction, however the trendline is clearly steeper in comparison. Additionally, there is one data point that stands out on the low end of the average child's education level, particularly at level 8 and the parents' education level 14. It appears that fathers with first cycle university diplomas have children who are less educated with assistant diplomas. Please refer to Table 1 in the appendix for descriptions of the education levels. 
+
+Education level is understandably linked to income as depicted in figure 2. Despite some small fluctuations and spikes, there is a very clear overall trend that with a higher level of education comes higher income. Notably there is a plateau phase where education levels nine through 13 are all found to correspond to the same income decile of just above decile 6.
+  
+# Discussion
+
+  Academic success is closely linked to what is happening at home which is linked to the parent’s level of education. The study done in Pakistan concludes that in order for the child to be properly set up and prepared for higher levels of education, it's imperative for the parents to be highly educated [@Idris2020]. Likewise, the study done in Vietnam explains that a household’s economic welfare is positively correlated to higher levels of education [@VanVu2020]. With the data we analyzed on France as well as the supportive trends in the other two other studies, we were able to conclude that it is beneficial and pays off to have both educated mothers and fathers. Parents with higher levels of education are positively correlated with children who go on to seek higher education, which is tied to higher salaries. Father-child education has a steeper slope than mother-child education indicating that the fathers level of education is more impactful on the child completing higher levels of education in comparison to the mother. 
+
+This analysis is interesting as attending post secondary education and beyond has a large cost to it in terms of money spent on tuition, accommodation as well as time that could be spent doing something else such as going straight into the workforce. Thus this study can be helpful in proving that it is more beneficial in the long run to spend the time and money to be well educated.  This is due to the  increased likelihood that with the education, one will make more money than those who decide not to attend post-secondary education. Upon completion of secondary school, it may seem overwhelming and costly to embark in more schooling, certainly when you do not have a clear idea as to the end career goal. However this data clearly conveys the importance of higher education for higher academic success, the completion of higher education and finally higher earnings.  
+
+Our analysis did not focus on which parent’s level of education played a greater role in the child's level of education. However this would be very interesting to look into further as the Pakistan study explains how the mothers level of education plays a more substantial role than the fathers in the child's level of education completed. This contrasts with our findings. The explanation for this is that the mother often takes more responsibility in nourishing the child in the sense of providing meals as well as connecting with the child on a deeper emotional level [@Idris2020].  Although the level of parental education completed is the most consequential contributor of the child's academic achievement, there are many other factors that play a role and influence their choice to proceed with higher levels of education after secondary school. Possible further research that impacts a child's education could include diving deeper into the role of the child’s home environment, access to educational facilities as well as their parents socio-economic status.
+
+Weaknesses of this paper include the relatively small sample size and a lack of precise income data, which for the future could be accessed through different means.
+
+# Appendix
+
+```{r education-level-table, echo=FALSE, fig.height=4}
 library(tibble)
 
 education_levels <- tibble(
@@ -99,95 +196,7 @@ education_levels <- tibble(
 knitr::kable(education_levels, caption = "Education Levels and Their Descriptions")
 ```
 
-# Results
-
-```{r, fig.width=6.4, fig.height=2.7}
-#| echo: false 
-# code not included in doc
-#| warning: false 
-# no warnings in the doc
-#| message: false 
-# no messages in the doc
-
-y_limits <- c(1, 26)
-
-# Want to plot child education level based on parents education level
-avg_education_by_mother <- cleaned_income_education_data |>
-  group_by(`Mother's highest level of education`) |>
-  summarize(average_education = mean(`Highest level of education`, na.rm = TRUE)) |>
-  ungroup()
-
-avg_education_by_father <- cleaned_income_education_data |>
-  group_by(`Father's highest level of education`) |>
-  summarize(average_education = mean(`Highest level of education`, na.rm = TRUE)) |>
-  ungroup()
-
-# Create the line graph
-mom_plot <- ggplot(avg_education_by_mother, aes(x = `Mother's highest level of education`, y = average_education)) +
-  geom_line() +  # Draws the line
-  geom_point() +  # Adds points at each data point
-  labs(
-    x = "Mother's Education Level",
-    y = "Child's Education Level (Avg.)"
-  ) +
-  scale_y_continuous(limits = y_limits) +
-  theme_minimal()  # Applies a minimal theme
-
-dad_plot <- ggplot(avg_education_by_father, aes(x = `Father's highest level of education`, y = average_education)) +
-  geom_line() +  # Draws the line
-  geom_point() +  # Adds points at each data point
-  labs(
-    x = "Father's Education Level",
-    y = "Child's Education Level  (Avg.)"
-  ) +
-  scale_y_continuous(limits = y_limits) +
-  theme_minimal()  # Applies a minimal theme
-
-parent_plot <- mom_plot + dad_plot
-parent_plot + plot_annotation(title = "Influence of Parental Education Levels on Child's Education", theme = theme(plot.title = element_text(hjust = 0.5)))
-```
-
-  Figure 1.
-  
-```{r,  fig.width=6.4, fig.height=2.8}
-#| echo: false 
-# code not included in doc
-#| warning: false 
-# no warnings in the doc
-#| message: false 
-# no messages in the doc
-
-avg_income_by_education <- cleaned_income_education_data |>
-  group_by(`Highest level of education`) |>
-  summarize(Average_Income_Decile = mean(`Households Total Income`, na.rm = TRUE)) |>
-  ungroup()
-
-ggplot(avg_income_by_education, aes(x = `Highest level of education`, y = Average_Income_Decile)) +
-  geom_line() +  # Connect points with a line
-  geom_point() +  # Add points for each education level
-  labs(
-    title = "Income Trends Across Education Levels",
-    x = "Highest Education Level",
-    y = "Income Decile (Avg.)"
-  ) +
-  theme_minimal()  # Use a minimal theme for the plot
-```
-
-  Figure 2.
-  
-The outcome of the analysis was to understand how charges for running a red light change every year. I was interested in whether there would be a decrease in charges across all locations because of the $325 fee if you were issued a ticket. I wondered whether proximity to what I consider more downtown Toronto or the CN tower compared to in North York would make a difference as to the number of red light charges given.  
-  
-# Discussion
-
-  Academic success is closely linked to what is happening at home which is linked to the parent’s level of education. The study done in Pakistan concludes that in order for the child to be properly set up and prepared for higher levels of education, it's imperative for the parents to be highly educated [@Idris2020]. Likewise, the study done in Vietnam explains that a household’s economic welfare is positively correlated to higher levels of education [@VanVu2020]. With the data we analyzed on France as well as the supportive trends in the other two other studies, we were able to conclude that it is beneficial to have educated parents. Parents with higher levels of education are positively correlated with children who go on to seek higher education, which is tied to higher salaries. 
-
-This analysis is interesting as attending post secondary education and beyond has a large cost to it in terms of money spent on tuition, accommodation as well as time that could be spent going straight into the workforce. Thus this study can be helpful in proving that it is more beneficial in the long run to spend the time and money to be well educated due to the increased likelihood that with the education, one will make more money than those who decide not to attend post-secondary education. Upon completion of secondary school, it may seem overwhelming and costly to embark in more schooling, certainly when you do not have a clear idea as to the end career goal. However this data clearly conveys the importance of higher education for higher success and higher earnings.  
-
-Further research could inspect the effect of socio-economic status on parental and children’s level of education. Moreover, the Pakistan study explains how the mothers level of education plays a more substantial role than the fathers in the child's likelihood of pursuing higher education. The explanation for this is that the mother often takes more responsibility in nourishing the child in the sense of providing meals as well as connecting with the child on a deeper emotional level [@Idris2020]. It would be intriguing to look at the mothers and fathers education level separately rather than combined. Although the level of parental education completed is the most consequential contributor of the child's academic achievement, there are many other factors that play a role and influence their choice to proceed with higher levels of education after secondary school. Possible further research could include diving deeper into the role of the child’s home environment and access to educational facilities on the child level of education [@Idris2020].
-
-
 \newpage
-
 
 # References
 
