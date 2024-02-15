@@ -29,4 +29,13 @@ bad_values <- c(77, 88, 99, 5555, 7777, 8888, 9999)
 cleaned_data <- semi_clean_data |>
   filter(!if_any(everything(), ~ .x %in% bad_values))
 
+# Rename columns
+new_cols <- c("Highest level of education",
+              "Mother's highest level of education",
+              "Father's highest level of education",
+              "Households Total Income")
+
+setnames(cleaned_data, old = columns, new = new_cols)
+
+# Save data to new file
 write_csv(cleaned_data, "outputs/data/ESS10_Clean.csv")
