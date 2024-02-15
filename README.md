@@ -2,7 +2,7 @@
 
 
 --Reproductions--  
-Reproduction done on 'Making Unequal Democracy Work? The Effects of Income on Voter Turnout in Northern Italy' by Jerome Schafer, Enrico Cantoni, Giorgio Bellettini, Carlotta Berti Ceroni  
+3 reproductions done on 'Making Unequal Democracy Work? The Effects of Income on Voter Turnout in Northern Italy' by Jerome Schafer, Enrico Cantoni, Giorgio Bellettini, Carlotta Berti Ceroni  
 DOI: https://doi.org/10.1111/ajps.12605  
 For reproduction code see 'scripts/04-replication.R'  
 For reproduction output graphs see 'outputs/data/'
