@@ -1,3 +1,15 @@
+#### Preamble ####
+# Purpose: Replicates 3 figures from [paper]
+# Author: Xavier Ibanez-Padron
+#         Lexi Knight
+# Date: 14 February 2024
+# Contact: xavier.ibanezpadron@mail.utoronto.ca,
+#          lexi.knight@mail.utoronto.ca
+# License: MIT
+# Pre-requisites: N/A
+# Any other information needed? N/A
+
+#### Workspace setup ####
 library(tidyverse)
 library(ggplot2)
 library(dplyr)

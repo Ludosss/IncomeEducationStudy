@@ -38,4 +38,5 @@ new_cols <- c("Highest level of education",
 setnames(cleaned_data, old = columns, new = new_cols)
 
 # Save data to new file
+
 write_csv(cleaned_data, "outputs/data/ESS10_Clean.csv")

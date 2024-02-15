@@ -12,9 +12,7 @@ number-sections: true
 bibliography: references.bib
 ---
 
-```{r} 
-# Chunk 1
-
+```{r Install/Load, include=FALSE}
 #| message: false
 #| echo: false
 
@@ -22,9 +20,13 @@ bibliography: references.bib
 
 # Install packages
 # install.packages("tidyverse")
+# install.packages("patchwork")
+# install.packages("knitr")
 
 # Load packages
 library(tidyverse)
+library(patchwork)
+library(knitr)
 
 # Read in cleaned data
 cleaned_income_education_data <- read_csv(here::here("outputs", "data", "ESS10_Clean.csv"))
@@ -32,52 +34,74 @@ cleaned_income_education_data <- read_csv(here::here("outputs", "data", "ESS10_C
 ```
 
 # Introduction
-  A study done on tenth graders in the Mardan district of Pakistan showed that children with educated parents have notably greater academic success and go onto higher levels of education as compared to children with uneducated parents (Idris,2020). The authors explain that parents have a great deal of influence on their child's knowledge, vocabulary and values. Parents with higher education promote meaningful discussion at home, social skills, give advice based on their experiences and encourage their children to put in the effort to learn. Additionally, parents' level of education corresponds to their attitude toward education thus their goals for their children. These factors are all positively correlated with students' academic success. Parents without post-secondary education are less likely to have discussions and create learning opportunities in the household (Idris,2020). Thus parents with more years of education are found to aspire their children to have higher skills, better equipping them for post-secondary education. 
-  Another study done in Vietnam used a mean and quantile regression approach to observe the effect of household income on higher levels of education (Vu, 2020). The key finding highlighted that higher levels of education are positively correlated with earning higher income. This was very clear when put into the context of Vietnam as a country. Vietnam was known as one of the poorest countries in the world but in the last few decades has worked its way up to a lower-middle income country. The economy was greatly enhanced by refining the education systems as well as access to tertiary levels (Vu, 2020). This also boosted poverty levels and increased opportunities for children to engage in higher levels of learning. The regression analysis proves that it pays off to pursue higher education as it provides a  positive return for all income groups. Overall, the findings of the study explain that additional years of education results in higher income households as compared to households with fewer years of education who are subject to lower levels of income (Vu, 2020). 
-  In this paper, we examine the relationship between one’s parents' level of education, their level of education as well as their income. More specifically we are looking at data from France taken from a European Union Survey in the year 2018. The variables of interest include both the mothers, fathers and childs highest level of education which is ranked on a rating scale from zero through seven. The fourth variable is the child's household net income based on the head of the household.  We are interested in whether there is a correlation between parents' level of education and their child's level of education. Specifically, we are curious as to whether our data has the same trends as the study done in Pakistan, in that parents with high levels of education raise their children to also complete higher education. Furthermore, we are interested in the relationship between one’s level of education and their income. Explicitly, we are keen to understand whether our data and that of the Vietnam study are positively correlated, indicating higher levels of education are analogous to higher income. 
+  A study done on tenth graders in the Mardan district of Pakistan showed that children with educated parents have notably greater academic success and go onto higher levels of education as compared to children with uneducated parents [@Idris2020]. The authors explain that parents have a great deal of influence on their child's knowledge, vocabulary and values. Parents with higher education promote meaningful discussion at home, social skills, give advice based on their experiences and encourage their children to put in the effort to learn. Additionally, parents' level of education corresponds to their attitude toward education thus their goals for their children. These factors are all positively correlated with students' academic success. Parents without post-secondary education are less likely to have discussions and create learning opportunities in the household [@Idris2020]. Thus parents with more years of education are found to aspire their children to have higher skills, better equipping them for post-secondary education.
+  
+  Another study done in Vietnam used a mean and quantile regression approach to observe the effect of household income on higher levels of education [@VanVu2020]. The key finding highlighted that higher levels of education are positively correlated with earning higher income. This was very clear when put into the context of Vietnam as a country. Vietnam was known as one of the poorest countries in the world but in the last few decades has worked its way up to a lower-middle income country. The economy was greatly enhanced by refining the education systems as well as access to tertiary levels [@VanVu2020]. This also boosted poverty levels and increased opportunities for children to engage in higher levels of learning. The regression analysis proves that it pays off to pursue higher education as it provides a  positive return for all income groups. Overall, the findings of the study explain that additional years of education results in higher income households as compared to households with fewer years of education who are subject to lower levels of income [@VanVu2020].
+  
+  In this paper, we examine the relationship between one’s parents' level of education, their level of education as well as their income. More specifically we are looking at data from France taken from a European Union Survey in the year 2018. The variables of interest include both the mothers, fathers and childs highest level of education which is ranked on a rating scale from zero through seven. The fourth variable is the child's household net income based on the head of the household.  We are interested in whether there is a correlation between parents' level of education and their child's level of education. Specifically, we are curious as to whether our data has the same trends as the study done in Pakistan, in that parents with high levels of education raise their children to also complete higher education. Furthermore, we are interested in the relationship between one’s level of education and their income. Explicitly, we are keen to understand whether our data and that of the Vietnam study are positively correlated, indicating higher levels of education are analogous to higher income.
+  
   To better visualize the data, we created figures illustrating different categories of education and where the mother, father and child fit in as well as the childs net household’s income. This was best represented using line plots to analyze the relationship between each variable. Our results indicate that the France data showed similar trends to both Pakistan and Vietnam. Thus we were able to conclude that children with mothers and fathers that have higher levels of education are more likely to themselves engage in higher levels of education. Moreover, it was observed that more years of education are affiliated with higher levels of education. This investigation is captivating as one of the big decisions upon completing secondary school is whether to pursue higher education or enter straight into the workforce. This decision is highly affected by the mother and fathers level of higher education. These two paths yield very different salaries and hence lifestyles therefore highlighting the weight parents' education holds on a child's future finances. 
 
 The remainder of this paper is structured as follows: Section 2 discusses the data, Section 3 presents the results and lastly Section 4 discusses our findings as well as areas of weaknesses and improvements. 
 
 
 # Data {#sec-data}
-I retrieved the data from Open Data Tronto Portal through the library @citeOpenDataToronto. The dataset @redlightcameraannualcharges was used to analyze the intersections with red light cameras across the City of Toronto. After downloading the dataset, I proceeded to the cleaning and analyzing stage with open source statistically programming language R @citeR, using function from tidyverse @citetidyverse, dplyr @citedplyr, ggplot2 @citeggplot2, and kableExtra @citekableExtra.
+We retrieved the dataset from the European Social Survey (ESS) data portal, a source which reflects a wide array of social, political, and demographic variables collected across Europe. After downloading the dataset, We cleaned and analyzed via open source statistical programming language R [@citeR], using functions from libraries tidyverse [@citetidy], dplyr [@citedplyr], knitr [@citeknitr], and ggplot2 [@citeggplot].
 
-  The raw dataset contained over 300 intersections across the years 2007 to 2022. I decided to simplify and isolate five intersections across the City of Toronto. Additionally, I decided to analyze years 2012 to 2022 to allow for a ten year analysis.
-
-  After cleaning the data, I generated Table 1, shown below. 
-Here I briefly describe the Red Light Data model used to investigate two aspects of the ticket charges. Firstly, it is to explore how the charges change from year to year for individual locations. Secondly, I summed up the charges over the ten years and included a total charges column. This allows for comparison of charges at different intersections in the past ten years. The different locations are interesting as two are located near Lake Ontario, within a kilometer namely Richmond street at Parliament Street and Lake Shore Boulevard at York. On the other hand the other three are in North York, about 9 kilometers from York University, namely Steeles Avenue at Carpenter Road, Steeles Avenue at Hilda Avenue and Albion Road at Silverstone Drive. 
-
-  This model assumes North York is considered as part of the City of Toronto. It's important to note that this data includes only when the driver is charged for running a red light and thus may be missing data from instances where the driver gets away without a ticket. 
-
-```{r}
-#| echo: false 
-# code not included in doc
-#| warning: false 
-# no warnings in the doc
-#| message: false 
-# no messages in the doc
+Our analysis concentrates on the 2020 dataset, which comprises responses from over 37,000 individuals across various European countries. This paper focuses specifically on approximately 1,400 respondents from France. 
   
-### Stimulate data ###
-table1 <- cleaned_red_light_data
+From the over 600 variables available, we chose the four variables of interest: Highest level of education, Mother's highest level of education, Father's highest level of education, and Households Total Net Income. These variables were chosen for their direct relevance to our papers focus.
 
-# rename the columns 
-colnames(table1) = c("Location", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022")
+Due to the monopoly the ESS holds over social data collection in Europe, no comparable alternative data sources were seriously considered.
 
-# add a column for the sum of charges called Total_Charges  
-table1$Total_Charges <- rowSums(sapply(table1[,2:12],function(x)as.numeric(as.character(x))))
+The selected variables were cleaned and prepared for analysis. This included removing non-French data points and non-responses. This was done for the sake of ensuring the data accurately represented the survey's findings while also allowing robust analysis.
 
-# make table cuter
-cutie <- kable(table1, format = 'latex', booktable = TRUE, caption = 'Total Number of Charges per Year Based on Location') %>% kable_styling(latex_options = 'scale_down')
-cutie
+The education level mentioned in the data ranges from numerical values 1 through 26, each representing a different educational milestone. Please refer to Table 1 for a detailed description of each education level integer and its corresponding educational milestone [Translated from the original French].
 
+\newpage
+
+```{r education-level-table, echo=FALSE}
+library(tibble)
+
+education_levels <- tibble(
+  Code = 1:26,
+  Description = c(
+    "Not schooled or did not complete primary school",
+    "Primary school only",
+    "Primary studies certificate",
+    "Education followed from 6th to 9th grade",
+    "Elementary certificate, First cycle studies certificate, Middle school certificate",
+    "Education followed from 10th to 12th grade",
+    "Vocational training certificate, Vocational study certificate, End of apprenticeship examination",
+    "Nursing assistant diploma, Childcare assistant, Special education assistant, Homecare assistant",
+    "Vocational baccalaureate, Technician certificate",
+    "Technological baccalaureate, Technician's baccalaureate, Various technical certificates",
+    "General baccalaureate, Advanced certificate",
+    "Law capacity diploma, University studies access diploma (DAEU)",
+    "Youth worker diploma, Specialized technical educator, Professional certificate",
+    "First cycle university diploma (DEUG), Preparatory classes for elite schools",
+    "University technology diploma (DUT), Advanced technician certificate (BTS)",
+    "Teaching aptitude certificate, Special education diploma, Social worker diploma",
+    "Professional license",
+    "Bachelor's degree",
+    "Engineering school diploma",
+    "Advanced studies diploma, Professional master's degree (second year)",
+    "Master's degree, Teaching certification for secondary education, Elementary school teacher certification",
+    "Advanced studies diploma, Research master's degree (second year), Teaching aggregation",
+    "Various higher professional diplomas (notary, architect, veterinarian, journalist, etc.)",
+    "Grandes écoles diploma (excluding engineering schools)",
+    "Doctorate in medicine or equivalents (Medicine, Dental, Pharmacy, Veterinary)",
+    "Doctorate"
+  )
+)
+
+# Print the table
+knitr::kable(education_levels, caption = "Education Levels and Their Descriptions")
 ```
 
 # Results
 
- The outcome of the analysis was to understand how charges for running a red light change every year. I was interested in whether there would be a decrease in charges across all locations because of the $325 fee if you were issued a ticket. I wondered whether proximity to what I consider more downtown Toronto or the CN tower compared to in North York would make a difference as to the number of red light charges given.
-
-```{r}
+```{r, fig.width=6.4, fig.height=2.7}
 #| echo: false 
 # code not included in doc
 #| warning: false 
@@ -85,25 +109,82 @@ cutie
 #| message: false 
 # no messages in the doc
 
-# Want to plot location on x axis and sum charges  on y axis
-# creating meaningful axies names, x is intersection and y is Total Charges
-bar1 <- table1[,c(1,13)]
-ggplot(table1 = bar1$Location) + geom_col(aes(x= table1$Location, y = table1$Total_Charges)) +labs(title = "Graph 1: Location vs. Total Changes", y = "Total Charges", x = "Location") 
+y_limits <- c(1, 26)
 
+# Want to plot child education level based on parents education level
+avg_education_by_mother <- cleaned_income_education_data |>
+  group_by(`Mother's highest level of education`) |>
+  summarize(average_education = mean(`Highest level of education`, na.rm = TRUE)) |>
+  ungroup()
 
+avg_education_by_father <- cleaned_income_education_data |>
+  group_by(`Father's highest level of education`) |>
+  summarize(average_education = mean(`Highest level of education`, na.rm = TRUE)) |>
+  ungroup()
+
+# Create the line graph
+mom_plot <- ggplot(avg_education_by_mother, aes(x = `Mother's highest level of education`, y = average_education)) +
+  geom_line() +  # Draws the line
+  geom_point() +  # Adds points at each data point
+  labs(
+    x = "Mother's Education Level",
+    y = "Child's Education Level (Avg.)"
+  ) +
+  scale_y_continuous(limits = y_limits) +
+  theme_minimal()  # Applies a minimal theme
+
+dad_plot <- ggplot(avg_education_by_father, aes(x = `Father's highest level of education`, y = average_education)) +
+  geom_line() +  # Draws the line
+  geom_point() +  # Adds points at each data point
+  labs(
+    x = "Father's Education Level",
+    y = "Child's Education Level  (Avg.)"
+  ) +
+  scale_y_continuous(limits = y_limits) +
+  theme_minimal()  # Applies a minimal theme
+
+parent_plot <- mom_plot + dad_plot
+parent_plot + plot_annotation(title = "Influence of Parental Education Levels on Child's Education", theme = theme(plot.title = element_text(hjust = 0.5)))
 ```
 
-  Graph 1 includes the total number of charges over the ten years for the five individual locations. I included a bar chart to get a better visual and allow for comparison. Here it can be seen that Richmond Street at Parliament showed the most red light charges in the last ten years, doubling every other intersection. It is followed by Steeles Avenue at Carpenter Road with a difference of over a 1,000 fewer charges. The intersection with the fewest total red light charges was Lake Shore Boulevard at York Street.
+  Figure 1.
+  
+```{r,  fig.width=6.4, fig.height=2.8}
+#| echo: false 
+# code not included in doc
+#| warning: false 
+# no warnings in the doc
+#| message: false 
+# no messages in the doc
 
+avg_income_by_education <- cleaned_income_education_data |>
+  group_by(`Highest level of education`) |>
+  summarize(Average_Income_Decile = mean(`Households Total Income`, na.rm = TRUE)) |>
+  ungroup()
+
+ggplot(avg_income_by_education, aes(x = `Highest level of education`, y = Average_Income_Decile)) +
+  geom_line() +  # Connect points with a line
+  geom_point() +  # Add points for each education level
+  labs(
+    title = "Income Trends Across Education Levels",
+    x = "Highest Education Level",
+    y = "Income Decile (Avg.)"
+  ) +
+  theme_minimal()  # Use a minimal theme for the plot
+```
+
+  Figure 2.
+  
+The outcome of the analysis was to understand how charges for running a red light change every year. I was interested in whether there would be a decrease in charges across all locations because of the $325 fee if you were issued a ticket. I wondered whether proximity to what I consider more downtown Toronto or the CN tower compared to in North York would make a difference as to the number of red light charges given.  
+  
 # Discussion
 
-  In this paper, I looked at data  concerning the annual number of charges issued to drivers that ran red lights. More specifically, I cleaned the dataset to investigate five different intersections in the City of Toronto across a ten year period. I created a table, namely table 1 in the data section illustrating the annual charges for each location. This allowed a visual aid to illustrate how there is an overall trend of an increase in charges in four out of five intersections. The exception is Albion Road at Silverstone Drive which shows a slight decrease in charges over the ten years however the data on the most recent five years does illustrate a surplus of charges. Additionally, four out of five of the intersections do show an increase in the last five years aside from Richmond Street and Parliament Street. It is interesting that Richmond Street at Parliament Street showed steady levels for the first few years, followed by a large spike in the number of charges and in the recent five years has declined. From the table and graphs, we can take away a general increase in charges; however it is important to note that this depiction is from a small sample of five intersections in different areas in the City of Toronto. 
+  Academic success is closely linked to what is happening at home which is linked to the parent’s level of education. The study done in Pakistan concludes that in order for the child to be properly set up and prepared for higher levels of education, it's imperative for the parents to be highly educated [@Idris2020]. Likewise, the study done in Vietnam explains that a household’s economic welfare is positively correlated to higher levels of education [@VanVu2020]. With the data we analyzed on France as well as the supportive trends in the other two other studies, we were able to conclude that it is beneficial to have educated parents. Parents with higher levels of education are positively correlated with children who go on to seek higher education, which is tied to higher salaries. 
 
-  This paper was eye opening in that despite a $325 charge for running a red light, many drivers still run lights and in fact there has been an overall increase in drivers who are issued tickets. Although I did not deeply investigate the type of intersection, I think it is an important factor to consider in terms of understanding which intersections drivers are more likely to run a red light. Additionally, there are many other factors that need to be considered when interested in the likelihood of drivers getting charged. It would also be interesting to see data on drivers that are not charged for running red lights. However some data may be hard to come by and or there may not be enough data to make a good analysis.  This dataset however, contained over 300 intersections however only 80 had data for ten consecutive years. I should note that the data only includes drivers that did get charged for running the light and thus there could be data missing for those drivers that did not get charged. 
+This analysis is interesting as attending post secondary education and beyond has a large cost to it in terms of money spent on tuition, accommodation as well as time that could be spent going straight into the workforce. Thus this study can be helpful in proving that it is more beneficial in the long run to spend the time and money to be well educated due to the increased likelihood that with the education, one will make more money than those who decide not to attend post-secondary education. Upon completion of secondary school, it may seem overwhelming and costly to embark in more schooling, certainly when you do not have a clear idea as to the end career goal. However this data clearly conveys the importance of higher education for higher success and higher earnings.  
 
-  I learned that consecutive and consistent data is important to create justifiable assumptions. Moreover, an important aspect of working with data is deciding what is important and picking a focus. One weakness is the number of intersections I looked at. I think it would have been more meaningful in allowing for a larger sample. 
+Further research could inspect the effect of socio-economic status on parental and children’s level of education. Moreover, the Pakistan study explains how the mothers level of education plays a more substantial role than the fathers in the child's likelihood of pursuing higher education. The explanation for this is that the mother often takes more responsibility in nourishing the child in the sense of providing meals as well as connecting with the child on a deeper emotional level [@Idris2020]. It would be intriguing to look at the mothers and fathers education level separately rather than combined. Although the level of parental education completed is the most consequential contributor of the child's academic achievement, there are many other factors that play a role and influence their choice to proceed with higher levels of education after secondary school. Possible further research could include diving deeper into the role of the child’s home environment and access to educational facilities on the child level of education [@Idris2020].
 
-  Future work could look at intersections close to one another to get an idea about which types of intersections drivers are more likely to run red lights. For example, it would be interesting and relevant to pick intersections around the University of Toronto and analyze the number of charges issued. This would impact student safety and thus perhaps the data would show a decrease in charges around the area. However having another area to compare the data to is equally important.  More consistent data is needed  across consecutive periods of time to really ensure correct assumptions are made and portray accurate data. THis also improves others' trust in the data. 
 
 \newpage
 
